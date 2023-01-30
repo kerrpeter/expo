@@ -12,7 +12,6 @@ data class SigningInfo(val easProjectId: String, val scopeKey: String)
 
 sealed class UpdateDirective(val signingInfo: SigningInfo?) {
   class NoUpdateAvailableUpdateDirective(signingInfo: SigningInfo?) : UpdateDirective(signingInfo)
-  class RollBackToEmbeddedUpdateDirective(val commitTime: Date, signingInfo: SigningInfo?) : UpdateDirective(signingInfo)
 
   companion object {
     fun fromJSONString(jsonString: String): UpdateDirective {
@@ -22,10 +21,6 @@ sealed class UpdateDirective(val signingInfo: SigningInfo?) {
       }
       return when (val messageType = json.require<String>("type")) {
         "noUpdateAvailable" -> NoUpdateAvailableUpdateDirective(signingInfo)
-        "rollBackToEmbedded" -> RollBackToEmbeddedUpdateDirective(
-          UpdatesUtils.parseDateString(json.require<JSONObject>("parameters").require("commitTime")),
-          signingInfo
-        )
         else -> throw Error("Invalid message messageType: $messageType")
       }
     }

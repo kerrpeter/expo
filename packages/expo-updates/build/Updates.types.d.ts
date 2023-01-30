@@ -93,18 +93,9 @@ type UpdateFetchResultFailure = {
     manifest: undefined;
 };
 /**
- * The rollback to embedded result of fetching a new update.
- */
-type UpdateFetchResultRollbackToEmbedded = {
-    /**
-     * Signifies that the app is already running the latest available update.
-     */
-    isRollBackToEmbedded: true;
-};
-/**
  * The result of fetching a new update.
  */
-export type UpdateFetchResult = UpdateFetchResultSuccess | UpdateFetchResultFailure | UpdateFetchResultRollbackToEmbedded;
+export type UpdateFetchResult = UpdateFetchResultSuccess | UpdateFetchResultFailure;
 /**
  * An object that is passed into each event listener when an auto-update check occurs.
  */

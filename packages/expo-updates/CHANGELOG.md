@@ -4,7 +4,7 @@
 
 ### 🛠 Breaking changes
 
-- [android] Add support for version 1 of the protocol and rollbacks. ([#20275](https://github.com/expo/expo/pull/20275) by [@wschurman](https://github.com/wschurman))
+- [android] Add support for version 1 of the protocol. ([#20275](https://github.com/expo/expo/pull/20275) by [@wschurman](https://github.com/wschurman))
 
 
 ### 🎉 New features
