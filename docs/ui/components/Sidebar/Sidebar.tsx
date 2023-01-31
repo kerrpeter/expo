@@ -43,8 +43,8 @@ export type SidebarNodeProps = {
 
 export const Sidebar = ({ routes = [] }: SidebarProps) => {
   const renderTypes: Record<NavigationType, React.ComponentType<SidebarNodeProps> | null> = {
-    section: SidebarSection,
-    group: SidebarGroup,
+    section: SidebarGroup,
+    group: SidebarSection,
     page: null, // Pages are rendered inside groups and should not be rendered directly
   };
 

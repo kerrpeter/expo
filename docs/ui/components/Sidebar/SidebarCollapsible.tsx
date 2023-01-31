@@ -81,11 +81,18 @@ export function SidebarCollapsible(props: Props) {
         onClick={toggleIsOpen}
         {...customDataAttributes}>
         <div css={chevronContainerStyle}>
-          <ChevronDownIcon size={iconSize.xs} css={[chevronStyle, !isOpen && chevronClosedStyle]} />
+          <ChevronDownIcon
+            size={iconSize['2xs']}
+            css={[chevronStyle, !isOpen && chevronClosedStyle]}
+          />
         </div>
-        <CALLOUT weight="medium">{info.name}</CALLOUT>
+        <CALLOUT>{info.name}</CALLOUT>
       </ButtonBase>
-      {isOpen && <div aria-hidden={!isOpen ? 'true' : 'false'}>{children}</div>}
+      {isOpen && (
+        <div aria-hidden={!isOpen ? 'true' : 'false'} css={childrenContainerStyle}>
+          {children}
+        </div>
+      )}
     </>
   );
 }
@@ -93,9 +100,8 @@ export function SidebarCollapsible(props: Props) {
 const titleStyle = css({
   display: 'flex',
   alignItems: 'center',
-  gap: spacing[1.5],
+  gap: spacing[2],
   position: 'relative',
-  marginBottom: spacing[2],
   userSelect: 'none',
   transition: '100ms',
   padding: `${spacing[1.5]}px ${spacing[3]}px`,
@@ -117,9 +123,8 @@ const chevronContainerStyle = css({
   alignItems: 'center',
   justifyContent: 'center',
   boxShadow: shadows.xs,
-  height: 20,
-  width: 20,
-  marginRight: spacing[1],
+  height: 16,
+  width: 16,
 });
 
 const chevronStyle = css({
@@ -129,4 +134,8 @@ const chevronStyle = css({
 
 const chevronClosedStyle = css({
   transform: 'rotate(-90deg)',
+});
+
+const childrenContainerStyle = css({
+  paddingLeft: spacing[2.5],
 });

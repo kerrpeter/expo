@@ -32,18 +32,36 @@ const generalDirectories = fs
 // --- Navigation ---
 
 const general = [
+  makeSection('', [makePage('home')]),
   makeSection(
     'Get started',
     [
-      makeGroup('Set up', [
-        makePage('get-started/installation.mdx'),
-        makePage('get-started/create-a-new-app.mdx'),
-        makePage('get-started/errors.mdx'),
-      ]),
+      makePage('get-started/installation.mdx'),
+      makePage('get-started/create-a-new-app.mdx'),
+      makePage('get-started/errors.mdx'),
+    ],
+    { expanded: true }
+  ),
+  makeSection(
+    'Develop',
+    [
+      makePage('tutorial/introduction.mdx'),
+      makeGroup(
+        'User interface',
+        [
+          makePage('guides/assets.mdx'),
+          makePage('guides/icons.mdx'),
+          makePage('guides/app-icons.mdx'),
+          makePage('guides/splash-screens.mdx'),
+          makePage('guides/configuring-statusbar.mdx'),
+          makePage('guides/color-schemes.mdx'),
+          makePage('guides/using-custom-fonts.mdx'),
+        ],
+        { expanded: true }
+      ),
       makeGroup(
         'Tutorial',
         [
-          makePage('tutorial/introduction.mdx'),
           makePage('tutorial/create-your-first-app.mdx'),
           makePage('tutorial/build-a-screen.mdx'),
           makePage('tutorial/image-picker.mdx'),
@@ -56,22 +74,15 @@ const general = [
         ],
         { expanded: true }
       ),
+      makePage('introduction/expo.mdx'),
+      makePage('introduction/managed-vs-bare.mdx'),
       makeGroup(
         'Conceptual overview',
-        [
-          makePage('introduction/expo.mdx'),
-          makePage('introduction/managed-vs-bare.mdx'),
-          // makePage('introduction/walkthrough.mdx'),
-          makePage('introduction/why-not-expo.mdx'),
-          makePage('introduction/faq.mdx'),
-        ],
+        [makePage('introduction/why-not-expo.mdx'), makePage('introduction/faq.mdx')],
         { expanded: true }
       ),
-      makeGroup(
-        'Next steps',
-        [makePage('next-steps/community.mdx'), makePage('next-steps/additional-resources.mdx')],
-        { expanded: true }
-      ),
+      makePage('next-steps/community.mdx'),
+      makePage('next-steps/additional-resources.mdx'),
     ],
     { expanded: true }
   ),
@@ -180,13 +191,6 @@ const general = [
     makePage('push-notifications/faq.mdx'),
   ]),
   makeSection('UI programming', [
-    makePage('guides/assets.mdx'),
-    makePage('guides/icons.mdx'),
-    makePage('guides/app-icons.mdx'),
-    makePage('guides/splash-screens.mdx'),
-    makePage('guides/configuring-statusbar.mdx'),
-    makePage('guides/color-schemes.mdx'),
-    makePage('guides/using-custom-fonts.mdx'),
     makePage('ui-programming/image-background.mdx'),
     makePage('ui-programming/implementing-a-checkbox.mdx'),
     makePage('ui-programming/z-index.mdx'),
@@ -410,6 +414,10 @@ function makeGroup(name, children = [], props = {}) {
  * @param {string} file
  */
 function makePage(file) {
+  if (file === 'home') {
+    return make('page', { name: 'Overview', href: '/' });
+  }
+
   const filePath = path.resolve(PAGES_DIR, file);
   const contents = fs.readFileSync(filePath, 'utf-8');
   const url = pageUrl(filePath);

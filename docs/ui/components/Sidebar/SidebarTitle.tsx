@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { theme, spacing } from '@expo/styleguide';
+import { spacing } from '@expo/styleguide';
 import * as React from 'react';
 
 import { CALLOUT } from '../Text';
@@ -15,9 +15,7 @@ export const SidebarTitle = ({ children }: SidebarTitleProps) => (
 const STYLES_TITLE = css({
   display: 'block',
   position: 'relative',
-  marginBottom: spacing[2],
-  borderBottom: `1px solid ${theme.border.default}`,
-  marginLeft: spacing[5] + spacing[0.5],
+  marginLeft: spacing[3],
   marginRight: -spacing[4],
   paddingBottom: spacing[2],
   userSelect: 'none',
