@@ -64,22 +64,9 @@ type UpdateCheckResultFailure = {
 };
 
 /**
- * The rollback to embedded result of checking for a new update.
- */
-type UpdateCheckResultRollbackToEmbedded = {
-  /**
-   * Signifies that the app is already running the latest available update.
-   */
-  isRollBackToEmbedded: true;
-};
-
-/**
  * The result of checking for a new update.
  */
-export type UpdateCheckResult =
-  | UpdateCheckResultSuccess
-  | UpdateCheckResultFailure
-  | UpdateCheckResultRollbackToEmbedded;
+export type UpdateCheckResult = UpdateCheckResultSuccess | UpdateCheckResultFailure;
 
 /**
  * The successful result of fetching a new update.

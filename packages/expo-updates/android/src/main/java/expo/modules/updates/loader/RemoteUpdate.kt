@@ -2,7 +2,6 @@ package expo.modules.updates.loader
 
 import expo.modules.jsonutils.getNullable
 import expo.modules.jsonutils.require
-import expo.modules.updates.UpdatesUtils
 import expo.modules.updates.manifest.ResponseHeaderData
 import expo.modules.updates.manifest.UpdateManifest
 import org.json.JSONObject
